@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('/home', [GameController::class, 'homePage']);
 Route::get('/form',[GameController::class, 'inputFormPage']);
 Route::post ('/form',[GameController::class, 'insertGame']);
+Route::get('/show-game/{id}', [GameController::class, 'show']);

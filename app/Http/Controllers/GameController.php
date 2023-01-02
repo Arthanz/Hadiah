@@ -24,4 +24,8 @@ class GameController extends Controller
         $newGame->save();
         return redirect()->to('/home');
     }
+    function show($id){
+        $games = Game::findOrFail($id);
+        return view('showGame', compact ('games'));
+    }
 }
