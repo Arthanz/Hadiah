@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [GameController::class, 'homePage']);
-Route::get('/form',[GameController::class, 'inputFormPage']);
-Route::post ('/form',[GameController::class, 'insertGame']);
-Route::get('/show-game/{id}', [GameController::class, 'show']);
+Route::get('/home', [GameController::class, 'homePage'])->name('homePage');
+Route::get('/form',[GameController::class, 'inputFormPage'])->name('inputFormPage');
+Route::post ('/form',[GameController::class, 'insertGame'])->name('insertGame');
+Route::get('/show-game/{id}', [GameController::class, 'show'])->name('show');
+Route::get('/edit-game/{id}', [GameController::class, 'edit'])->name('edit');
+Route::patch('/update-game/{id}', [GameController::class, 'update'])->name('update');
+Route::delete('/delete-game/{id}', [GameController::class, 'delete'])->name('delete');
