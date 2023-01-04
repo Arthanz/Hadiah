@@ -24,3 +24,7 @@ Route::get('/show-game/{id}', [GameController::class, 'show'])->name('show');
 Route::get('/edit-game/{id}', [GameController::class, 'edit'])->name('edit');
 Route::patch('/update-game/{id}', [GameController::class, 'update'])->name('update');
 Route::delete('/delete-game/{id}', [GameController::class, 'delete'])->name('delete');
+Route::get('/create-category', [CategoryController::class, 'create']);
+Route::post('/store-category', [CategoryController::class, 'store']);
+Route::get('/categories', 'App\Http\Controllers\CategoryController@create');
+Route::post('/store', 'App\Http\Controllers\CategoryController@store');

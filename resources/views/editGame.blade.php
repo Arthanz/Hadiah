@@ -18,8 +18,8 @@
       <input type="text" class="form-control" id="exampleInputPassword1" name="price" value="{{$games->price}}">
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">genre</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" name="genre" value="{{$games->genre}}">
+        <label for="exampleInputPassword1" class="form-label">Publisher</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" name="publisher" value="{{$games->publisher}}">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">published date</label>

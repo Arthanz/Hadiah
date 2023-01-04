@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Game;
 use Illuminate\Http\Request;
-
+use App\Models\Category;
 class GameController extends Controller
 {
     //
@@ -13,13 +13,14 @@ class GameController extends Controller
         return view('home', compact('games'));
     }
     function inputFormPage(){
-        return view('inputForm');
+        $categories = Category::all();
+        return view('inputForm', compact('categories'));
     }
     function insertGame(Request $request){
         $validated = $request->validate([
             'name'=>'required|unique:games,name|min:5|max:255',
             'PublishDate'=>'required',
-            'genre'=>'required',
+            'publisher'=>'required',
             'price'=>'required|min:4',
             'image'=>'required|mimes:jpg,png,jpeg'
 
@@ -34,9 +35,10 @@ class GameController extends Controller
         $newGame = new Game();
         $newGame->name = $request->name;
         $newGame->price = $request->price;
-        $newGame->genre = $request->genre;
+        $newGame->publisher = $request->publisher;
         $newGame->PublishDate = $request->PublishDate;
         $newGame->image = $filename;
+        $newGame->category_id = $request -> category;
         $newGame->save();
         return redirect()->to('/home');
     }
@@ -57,7 +59,7 @@ class GameController extends Controller
         Game::findOrFail($id)->update([
             'name'=>$request->title,
             'price'=>$request->price,
-            'genre'=>$request->genre,
+            'publisher'=>$request->publisher,
             'PublishDate'=>$request->publishDate,
             'image'=> $filename
         ]);
