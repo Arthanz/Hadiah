@@ -8,23 +8,26 @@
         @csrf
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+          <input type="text" class="form-control  @error('name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" value="{{old('name')}}">
+          @error('name')
+          <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Price</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" name="price">
+          <input type="text" class="form-control" id="exampleInputPassword1" name="price"  value="{{old('price')}}>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Genre</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" name="genre">
+            <input type="text" class="form-control" id="exampleInputPassword1" name="genre"  value="{{old('genre')}}>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Publish Date</label>
-            <input type="date" class="form-control" id="exampleInputPassword1" name="PublishDate">
+            <input type="date" class="form-control" id="exampleInputPassword1" name="PublishDate"  value="{{old('PublishDate')}}>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Image</label>
-          <input type="file" class="form-control" id="exampleInputPassword1" name="image">
+          <input type="file" class="form-control" id="exampleInputPassword1" name="image"  value="{{old('image')}}>
          </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

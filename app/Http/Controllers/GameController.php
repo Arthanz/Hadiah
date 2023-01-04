@@ -16,6 +16,15 @@ class GameController extends Controller
         return view('inputForm');
     }
     function insertGame(Request $request){
+        $validated = $request->validate([
+            'name'=>'required|unique:games,name|min:5|max:255',
+            'PublishDate'=>'required',
+            'genre'=>'required',
+            'price'=>'required|min:4',
+            'image'=>'required|mimes:jpg,png,jpeg'
+
+        ]);
+
 
         $extension = $request->file('image')->getClientOriginalExtension();
         // $filename = $request->name.'_'.$request
