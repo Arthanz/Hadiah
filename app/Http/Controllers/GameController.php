@@ -71,4 +71,9 @@ class GameController extends Controller
         Game::destroy($id);
         return redirect()->to('/home');
     }
+    function search(){
+        $search_text = $_GET['query'];
+        $games = Game::where('name', 'LIKE', '%'.$search_text.'%')->with('category')->get();
+        return view('search', compact('games'));
+    }
 }

@@ -30,8 +30,8 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Arthanz's Game Store</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" type="get" action="/search">
+          <input class="form-control me-2" type="search" name="query" placeholder="Search Games" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

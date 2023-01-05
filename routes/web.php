@@ -28,3 +28,4 @@ Route::get('/create-category', [CategoryController::class, 'create']);
 Route::post('/store-category', [CategoryController::class, 'store']);
 Route::get('/categories', 'App\Http\Controllers\CategoryController@create');
 Route::post('/store', 'App\Http\Controllers\CategoryController@store');
+Route::get('/search', [GameController::class, 'search']);
