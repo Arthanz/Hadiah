@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="m-5">
-  <h1 class="text-center">Create Game</h1>
+  <h1 class="text-center">Edit Game</h1>
 <form action="/update-game/{{$games->id}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('patch')
@@ -29,6 +29,14 @@
         <label for="exampleInputPassword1" class="form-label">Image</label>
         <input type="file" class="form-control" id="exampleInputPassword1" name="image" value="{{$games->image}}">
        </div>
+       <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Category</label>
+        <select class="form-select" aria-label="Default select example" name="category">
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}">{{$category->nama}}</option>
+            @endforeach
+          </select>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

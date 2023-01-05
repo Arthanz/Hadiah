@@ -48,9 +48,9 @@ class GameController extends Controller
         return view('showGame', compact ('games'));
     }
     function edit($id){
-
+        $categories = Category::all();
         $games = Game::findOrFail($id);
-        return view('editGame', compact('games'));
+        return view('editGame', compact('games'), compact('categories'));
     }
     function update(Request $request, $id){
         $extension = $request->file('image')->getClientOriginalExtension();
@@ -61,7 +61,8 @@ class GameController extends Controller
             'price'=>$request->price,
             'publisher'=>$request->publisher,
             'PublishDate'=>$request->publishDate,
-            'image'=> $filename
+            'image'=> $filename,
+            'category_id'=>$request->category
         ]);
         return redirect()->to('/home');
     }
