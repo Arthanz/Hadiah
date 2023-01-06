@@ -3,7 +3,7 @@
 @section('title','Home page')
 
 @section ('content')
-<div class="d-flex m-5">
+<div class="d-flex m-3 flex-wrap">
     @foreach ($games as $g)
     {{-- <p>{{$g->name}}</p> --}}
     <div class="card" style="width: 18rem;margin: 1cm" >
@@ -26,5 +26,16 @@
     @endforeach
 </div>
 
-
+<form action="/send-mail" method="POST">
+    @csrf
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">message</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="message">
+    </div>
+    <button type="submit" class="btn btn-primary">Send Email</button>
+</form>
 @endsection

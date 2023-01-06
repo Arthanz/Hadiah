@@ -8,11 +8,13 @@ class GameController extends Controller
 {
     //
     function homePage(){
+
         $games = Game::all();
 
         return view('home', compact('games'));
     }
     function inputFormPage(){
+        // $this->authorize('isAdmin');
         $categories = Category::all();
         return view('inputForm', compact('categories'));
     }
