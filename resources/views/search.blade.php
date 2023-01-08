@@ -10,7 +10,7 @@
         </h2>
     </x-slot>
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin: 1rem" >
-        <div class=" p-6 text-gray-900 dark:text-gray-100 d-flex m-3 flex-wrap">
+        <div class=" p-6 text-gray-900 dark:text-gray-100 w-full flex flex-wrap -mx-2 mb-2" style="flex-wrap: wrap">
             @foreach ($games as $g)
             <div class="card" style="width: 18rem;margin: 1cm" >
                 <img src="{{asset('/storage/game/'.$g->image)}}" class="card-img-top" alt="..." style="border-radius: 15px ">
