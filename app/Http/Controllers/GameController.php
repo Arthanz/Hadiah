@@ -33,7 +33,6 @@ class GameController extends Controller
             'publisher'=>'required',
             'price'=>'required|min:4',
             'image'=>'required|mimes:jpg,png,jpeg'
-
         ]);
 
 
