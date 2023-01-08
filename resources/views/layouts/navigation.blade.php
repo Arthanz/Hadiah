@@ -15,11 +15,30 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @can('isAdmin')
+                    <x-nav-link :href="route('inputFormPage')" :active="request()->routeIs('inputFormPage')">
+                        {{ __('Create Game') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
+                        {{ __('Add Category') }}
+                    </x-nav-link>
+                    @endcan
+                    <x-nav-link class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                        Arthanz's Game Store
+                      </x-nav-link>
                 </div>
+
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+                  <div class="mr-1">
+                    <form class="d-flex -ml-6 " type="get" action="/search" style="" align="right">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Search Games" aria-label="Search" style="background-color:rgb(196, 212, 207);border-radius: 15cm">
+                        <button class="btn btn-outline-success font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" type="submit" style="background-color:rgb(60, 190, 101);border-radius: 15cm">Search</button>
+                      </form>
+                  </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -72,6 +91,7 @@
             </x-responsive-nav-link>
         </div>
 
+
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
@@ -84,10 +104,21 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
+                @can('isAdmin')
+                <x-responsive-nav-link :href="route('inputFormPage')">
+                    {{ __('Create Game') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('categories')">
+                    {{ __('Add Category') }}
+                </x-responsive-nav-link>
+                <form class="d-flex -ml-6 " type="get" action="/search" style="" align="left">
+                    <input class="form-control me-2" type="search" name="query" placeholder="Search Games" aria-label="Search" style="background-color:rgb(196, 212, 207);border-radius: 12px">
+                    <button class="btn btn-outline-success font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" type="submit" style="background-color:rgb(60, 190, 101);border-radius: 15cm">Search</button>
+                  </form>
+                @endcan
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">

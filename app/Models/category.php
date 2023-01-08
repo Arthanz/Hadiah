@@ -13,7 +13,7 @@ class Category extends Model
         'nama',
     ];
 
-    public function books()
+    public function games()
     {
         return $this->hasMany(Game::class);
     }

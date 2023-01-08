@@ -13,6 +13,12 @@ class GameController extends Controller
 
         return view('home', compact('games'));
     }
+    function dash(){
+
+        $games = Game::all();
+
+        return view('dashboard', compact('games'));
+    }
     function inputFormPage(){
         // $this->authorize('isAdmin');
         $categories = Category::all();
@@ -30,7 +36,6 @@ class GameController extends Controller
 
 
         $extension = $request->file('image')->getClientOriginalExtension();
-        // $filename = $request->name.'_'.$request
         $filename = $request->file('image')->getClientOriginalName();
         $request -> file('image')->storeAs('/public/game/', $filename);
 
@@ -42,7 +47,7 @@ class GameController extends Controller
         $newGame->image = $filename;
         $newGame->category_id = $request -> category;
         $newGame->save();
-        return redirect()->to('/home');
+        return redirect()->to('/dashboard');
     }
     function show($id){
         $games = Game::findOrFail($id);
@@ -66,12 +71,12 @@ class GameController extends Controller
             'image'=> $filename,
             'category_id'=>$request->category
         ]);
-        return redirect()->to('/home');
+        return redirect()->to('/dashboard');
     }
 
     function delete($id){
         Game::destroy($id);
-        return redirect()->to('/home');
+        return redirect()->to('/dashboard');
     }
     function search(){
         $search_text = $_GET['query'];

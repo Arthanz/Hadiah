@@ -9,7 +9,14 @@ class CategoryController extends Controller
 {
     //
     public function create(){
-        return view('createCategory');
+
+        $category = Category::paginate();
+        return view('createCategory',  compact('category'));
+    }
+
+    function delete($id){
+        Category::destroy($id);
+        return redirect()->to('/categories');
     }
 
     public function store(Request $request){
@@ -17,6 +24,6 @@ class CategoryController extends Controller
             'nama' => $request->name
         ]);
 
-        return redirect('/home');
+        return redirect('/dashboard');
     }
 }

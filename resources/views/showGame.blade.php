@@ -11,7 +11,7 @@
       <h6 class="card-subtitle mb-2 ">Price: {{$games->price}}</h6>
       <p class="card-text mb-2">Publisher {{$games->publisher}}</p>
       <p class="card-text mb-2">Published Date: {{$games->PublishDate}}</p>
-      <p class="card-text mb-2">Category: {{$games->category->nama}}</p>
+<p class="card-text mb-2">Category: {{$games->category->nama}}</p>      <p class="card-text mb-2">Category: {{$games->category->nama}}</p>
       <a href="{{route('edit', $games->id)}}" class="btn btn-success m-1"">Edit Game</a>
       <form action="/delete-game/{{$games->id}}" method="POST">
         @csrf

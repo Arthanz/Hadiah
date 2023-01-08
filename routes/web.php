@@ -29,6 +29,7 @@ Route::middleware('isAdmin')->group(function () {
     Route::get('/edit-game/{id}', [GameController::class, 'edit'])->name('edit');
     Route::patch('/update-game/{id}', [GameController::class, 'update'])->name('update');
     Route::delete('/delete-game/{id}', [GameController::class, 'delete'])->name('delete');
+    Route::delete('/delete-category/{id}','App\Http\Controllers\CategoryController@delete')->name('delete');
     Route::get('/create-category', [CategoryController::class, 'create']);
     Route::post('/store-category', [CategoryController::class, 'store']);
     Route::get('/categories', 'App\Http\Controllers\CategoryController@create');
@@ -39,14 +40,27 @@ Route::get('/home', [GameController::class, 'homePage'])->name('homePage');
 
 Route::get('/search', [GameController::class, 'search']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard', [GameController::class, 'dash'])->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::middleware('isAdmin')->group(function () {
+        Route::get('/form',[GameController::class, 'inputFormPage'])->name('inputFormPage');
+        Route::post ('/form',[GameController::class, 'insertGame'])->name('insertGame');
+        Route::get('/show-game/{id}', [GameController::class, 'show'])->name('show');
+        Route::get('/edit-game/{id}', [GameController::class, 'edit'])->name('edit');
+        Route::patch('/update-game/{id}', [GameController::class, 'update'])->name('update');
+        Route::delete('/delete-game/{id}', [GameController::class, 'delete'])->name('delete');
+        Route::get('/categories', 'App\Http\Controllers\CategoryController@create')->name('categories');
+        Route::post('/store', 'App\Http\Controllers\CategoryController@store')->name('categoryStore');
+    });
 });
 
 require __DIR__.'/auth.php';
