@@ -24,6 +24,8 @@ class GameController extends Controller
         $categories = Category::all();
         return view('inputForm', compact('categories'));
     }
+
+
     function insertGame(Request $request){
         $validated = $request->validate([
             'name'=>'required|unique:games,name|min:5|max:255',

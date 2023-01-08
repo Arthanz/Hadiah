@@ -13,6 +13,6 @@ class MailController extends Controller
         $message = $request->message;
         Mail::to($request->email)->send(new sendMail($message));
 
-        return "mail has been sent succesfully";
+        return redirect()->back() ->with('alert', 'Message sent succesfully');
     }
 }

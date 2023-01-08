@@ -50,7 +50,8 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->middleware(['auth', 'verified'])->name('dashboard');
-
+    Route::post('review-store', 'BookingController@reviewstore')->name('review.store');
+    Route::get('/review-game', 'BookingController@reviewstore')->name('review.store');
     Route::middleware('isAdmin')->group(function () {
         Route::get('/form',[GameController::class, 'inputFormPage'])->name('inputFormPage');
         Route::post ('/form',[GameController::class, 'insertGame'])->name('insertGame');
